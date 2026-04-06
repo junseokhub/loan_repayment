@@ -35,9 +35,17 @@ export default function App() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
             <span className="text-xl">🏦</span>
-            <span className="text-sm font-extrabold tracking-[-0.02em] bg-gradient-to-br from-[#e2e8f0] to-[#94a3b8] bg-clip-text text-transparent">
-              LoanLab
-            </span>
+              <span style={{
+                background: 'linear-gradient(to bottom right, #e2e8f0, #94a3b8)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontSize: '0.875rem',
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+              }}>
+                LoanLab
+              </span>
           </div>
         </div>
 

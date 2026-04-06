@@ -127,13 +127,13 @@ export default function RepaymentTable({ plans, type, loading, onSwitchType, onR
                     <td className="px-5 py-3.5 text-[#475569] tabular-nums font-semibold">
                       {String(p.installmentNo).padStart(2, "0")}
                     </td>
-                    <td className="px-5 py-3.5 text-right text-[#cbd5e1] font-medium tabular-nums">
+                    <td className="px-5 py-3.5 text-right text-[#cbd5e1] font-medium tabular-nums whitespace-nowrap">
                       {formatKRW(p.principal)}
                     </td>
-                    <td className="px-5 py-3.5 text-right text-[#fbbf24] font-medium tabular-nums opacity-80">
+                    <td className="px-5 py-3.5 text-right text-[#fbbf24] font-medium tabular-nums opacity-80 whitespace-nowrap">
                       {formatKRW(p.interest)}
                     </td>
-                    <td className="px-5 py-3.5 text-right text-[#34d399] font-bold tabular-nums">
+                    <td className="px-5 py-3.5 text-right text-[#34d399] font-bold tabular-nums whitespace-nowrap">
                       {formatKRW(totalPay(p))}
                     </td>
                     <td className="px-5 py-3.5 w-[120px]">

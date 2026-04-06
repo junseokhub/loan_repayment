@@ -38,9 +38,14 @@ export default function LoanForm({ onSubmit, loading, error }: LoanFormProps) {
         <h2 className="text-[40px] font-black text-[#f8fafc] tracking-[-0.04em] leading-[1.15]">
           나에게 맞는
           <br />
-          <span className="bg-gradient-to-br from-[#34d399] to-[#60a5fa] bg-clip-text text-transparent">
-            상환 계획
-          </span>
+          <span style={{
+          background: 'linear-gradient(to bottom right, #34d399, #60a5fa)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>
+          상환 계획
+        </span>
           을 세워보세요
         </h2>
         <p className="text-[#64748b] text-sm mt-3 font-normal">
@@ -57,7 +62,7 @@ export default function LoanForm({ onSubmit, loading, error }: LoanFormProps) {
             <div className="relative">
               <input
                 className={inputClass}
-                type="text"
+                type="tel"
                 placeholder="5,000,000"
                 value={principal}
                 onChange={(e) => setPrincipal(e.target.value)}
