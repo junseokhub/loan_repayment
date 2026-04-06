@@ -21,11 +21,4 @@ public record RepaymentPlan(
         public BigDecimal totalPay() {
             return principal.add(interest);
         }
-
-
-        @Override
-        public String toString() {
-            return String.format("[%2d회차] 원금: %,10.0f원 | 이자: %,10.0f원 | 합계: %,10.0f원",
-                    installmentNo, principal, interest, totalPay());
-    }
 }

@@ -19,9 +19,6 @@ public class LoanRepaymentService {
     }
 
     public List<RepaymentPlan> calculatePlan(CalculateRequestDto calculateRequestdto) {
-        List<RepaymentPlan> result = repaymentStrategyRegistry.getStrategy(calculateRequestdto.type()).calculate(calculateRequestdto.loanRequest());
-
-        result.forEach(r -> logger.info("Result: {}", r));
-        return result;
+        return repaymentStrategyRegistry.getStrategy(calculateRequestdto.type()).calculate(calculateRequestdto.loanRequest());
     }
 }

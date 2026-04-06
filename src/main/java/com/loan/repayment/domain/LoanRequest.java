@@ -29,6 +29,10 @@ public record LoanRequest(
     }
 
     public BigDecimal rateMonthly() {
-        return interestRate.divide(BigDecimal.valueOf(MONTHS_IN_YEAR), RATE_SCALE, PRINCIPAL_ROUNDING);
+        return interestRate.divide(
+                BigDecimal.valueOf(MONTHS_IN_YEAR * 100L),
+                RATE_SCALE,
+                INTEREST_ROUNDING
+        );
     }
 }
