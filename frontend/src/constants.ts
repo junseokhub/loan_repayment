@@ -18,8 +18,6 @@ export const REPAYMENT_TYPES: RepaymentTypeMeta[] = [
   },
 ];
 
-export const API_BASE = "http://localhost:8080";
-
 export const formatKRW = (n: number): string =>
   new Intl.NumberFormat("ko-KR").format(n) + "원";
 

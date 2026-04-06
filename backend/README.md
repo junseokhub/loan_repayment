@@ -1,4 +1,6 @@
 # 대출 상환 방식
+## 버전
+Spring Boot 4.0.5, Java 21, Gradle (kts)
 ## 폴더 구조
 ```
 project/

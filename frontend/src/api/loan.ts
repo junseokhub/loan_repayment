@@ -1,10 +1,15 @@
-import { API_BASE } from "../constants";
-import type { CalculateRequestDto, RepaymentPlan } from "../types";
+import type { CalculateRequestDto, RepaymentPlan } from "@/types";
+
 
 export async function fetchRepaymentPlans(
   dto: CalculateRequestDto,
 ): Promise<RepaymentPlan[]> {
-  const res = await fetch(`${API_BASE}/api/v1/loan`, {
+    const baseUrl = import.meta.env.VITE_API_BASE;
+  if (!baseUrl) {
+    throw new Error("VITE_API_BASE is not defined in your environment variables");
+  }
+
+  const res = await fetch(`${baseUrl}/api/v1/loan`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(dto),
