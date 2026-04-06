@@ -1,5 +1,6 @@
 # 대출 상환 이자 방식
 ## 폴더 구조
+```
 project/
 ├─ src/main/java/com.loan.repayment/
 │  ├─ controller
@@ -22,7 +23,9 @@ project/
 │  │    └─ GlobalConstants.java
 ├─ README.md
 └─ Dockerfile
+```
 
+# 원리 
 
 ### Strategy
 - 상황방식들 간 공통 로직이 없음. 추상 클래스로 묶을것이 없음.
