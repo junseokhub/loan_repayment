@@ -10,12 +10,13 @@ project/
 │  │    │   └─ CalculateRequest.java     
 │  │    ├─ LoanRequest.java
 │  │    ├─ Repayment.java
-│  │    └─ RepaymentType
+│  │    └─ RepaymentType.
 │  ├─ service
 │  │    └─ LoanRepaymentService.java
 │  ├─ strategy
-│  │    ├─ BulletStrategy.java
-│  │    ├─ EqualInstallmentStrategy.java
+│  │    ├─ BulletRepaymentStrategy.java
+│  │    ├─ EqualInstallmentRepaymentStrategy.java
+│  │    ├─ EqualPrincipalRepaymentStrategy.java
 │  │    ├─ RepaymentStrategy.java
 │  │    ├─ RepaymentStrategyRegistry.java
 │  │    └─ UnsupportedRepaymentTypeException.java
@@ -24,8 +25,6 @@ project/
 ├─ README.md
 └─ Dockerfile
 ```
-
-# 원리 
 
 ### Strategy
 - 상황방식들 간 공통 로직이 없음. 추상 클래스로 묶을것이 없음.

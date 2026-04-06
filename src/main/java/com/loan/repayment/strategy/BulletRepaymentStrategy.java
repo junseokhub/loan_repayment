@@ -13,7 +13,7 @@ import java.util.List;
 // 만기 일시 상환
 // 만기까지 매월 이자만 납부하고, 마지막 회차에 원금 전액을 일시 상환
 @Component
-public class BulletStrategy implements RepaymentStrategy{
+public class BulletRepaymentStrategy implements RepaymentStrategy{
 
     @Override
     public RepaymentType getType() {

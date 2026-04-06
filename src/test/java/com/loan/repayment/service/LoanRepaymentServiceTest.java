@@ -3,8 +3,8 @@ package com.loan.repayment.service;
 import com.loan.repayment.domain.RepaymentPlan;
 import com.loan.repayment.domain.RepaymentType;
 import com.loan.repayment.domain.dto.CalculateRequestDto;
-import com.loan.repayment.strategy.BulletStrategy;
-import com.loan.repayment.strategy.EqualInstallmentStrategy;
+import com.loan.repayment.strategy.BulletRepaymentStrategy;
+import com.loan.repayment.strategy.EqualInstallmentRepaymentStrategy;
 import com.loan.repayment.strategy.RepaymentStrategyRegistry;
 import com.loan.repayment.strategy.UnsupportedRepaymentTypeException;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,8 +26,8 @@ class LoanRepaymentServiceTest {
     void setUp() {
         RepaymentStrategyRegistry registry = new RepaymentStrategyRegistry(
                 List.of(
-                        new EqualInstallmentStrategy(),
-                        new BulletStrategy()
+                        new EqualInstallmentRepaymentStrategy(),
+                        new BulletRepaymentStrategy()
                 )
         );
         loanRepaymentService = new LoanRepaymentService(registry);

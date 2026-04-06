@@ -12,13 +12,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("원리금균등상환")
-class EqualInstallmentStrategyTest {
+class EqualInstallmentRepaymentStrategyTest {
 
-    private EqualInstallmentStrategy equalInstallmentStrategy;
+    private EqualInstallmentRepaymentStrategy equalInstallmentRepaymentStrategy;
 
     @BeforeEach
     void setUp() {
-        equalInstallmentStrategy = new EqualInstallmentStrategy();
+        equalInstallmentRepaymentStrategy = new EqualInstallmentRepaymentStrategy();
     }
 
     @Test
@@ -27,7 +27,7 @@ class EqualInstallmentStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = equalInstallmentStrategy.calculate(request);
+        List<RepaymentPlan> schedules = equalInstallmentRepaymentStrategy.calculate(request);
 
         BigDecimal totalPrincipal = schedules.stream()
                 .map(RepaymentPlan::principal)
@@ -43,7 +43,7 @@ class EqualInstallmentStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = equalInstallmentStrategy.calculate(request);
+        List<RepaymentPlan> schedules = equalInstallmentRepaymentStrategy.calculate(request);
 
         List<BigDecimal> middlePayments = schedules.subList(1, schedules.size() - 1)
                 .stream()
@@ -64,7 +64,7 @@ class EqualInstallmentStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), termInMonths, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = equalInstallmentStrategy.calculate(request);
+        List<RepaymentPlan> schedules = equalInstallmentRepaymentStrategy.calculate(request);
 
         assertThat(schedules).hasSize(termInMonths);
     }
@@ -75,7 +75,7 @@ class EqualInstallmentStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 6, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = equalInstallmentStrategy.calculate(request);
+        List<RepaymentPlan> schedules = equalInstallmentRepaymentStrategy.calculate(request);
 
         for (int i = 0; i < schedules.size(); i++) {
             assertThat(schedules.get(i).installmentNo()).isEqualTo(i + 1);

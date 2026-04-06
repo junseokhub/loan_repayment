@@ -12,13 +12,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("만기일시상환")
-class BulletStrategyTest {
+class BulletRepaymentStrategyTest {
 
-    private BulletStrategy bulletStrategy;
+    private BulletRepaymentStrategy bulletRepaymentStrategy;
 
     @BeforeEach
     void setUp() {
-        bulletStrategy = new BulletStrategy();
+        bulletRepaymentStrategy = new BulletRepaymentStrategy();
     }
 
     @Test
@@ -27,7 +27,7 @@ class BulletStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = bulletStrategy.calculate(request);
+        List<RepaymentPlan> schedules = bulletRepaymentStrategy.calculate(request);
         int lastIndex = schedules.size() - 1;
 
         schedules.subList(0, lastIndex).forEach(s ->
@@ -43,7 +43,7 @@ class BulletStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = bulletStrategy.calculate(request);
+        List<RepaymentPlan> schedules = bulletRepaymentStrategy.calculate(request);
 
         BigDecimal totalPrincipal = schedules.stream()
                 .map(RepaymentPlan::principal)
@@ -58,7 +58,7 @@ class BulletStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = bulletStrategy.calculate(request);
+        List<RepaymentPlan> schedules = bulletRepaymentStrategy.calculate(request);
 
         List<BigDecimal> interests = schedules.stream()
                 .map(RepaymentPlan::interest)
@@ -77,7 +77,7 @@ class BulletStrategyTest {
         LoanRequest request = new LoanRequest(
                 new BigDecimal("10000000"), 12, new BigDecimal("0.05"));
 
-        List<RepaymentPlan> schedules = bulletStrategy.calculate(request);
+        List<RepaymentPlan> schedules = bulletRepaymentStrategy.calculate(request);
 
         assertThat(schedules.getFirst().interest())
                 .isEqualByComparingTo(new BigDecimal("41666"));

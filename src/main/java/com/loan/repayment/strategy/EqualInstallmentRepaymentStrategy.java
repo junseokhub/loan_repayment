@@ -14,7 +14,7 @@ import static com.loan.repayment.util.GlobalConstants.*;
 // 원리금균등상환
 // emi P x r x (1 + r)^n / ((1 + r)^n -1)
 @Component
-public class EqualInstallmentStrategy implements RepaymentStrategy {
+public class EqualInstallmentRepaymentStrategy implements RepaymentStrategy {
     @Override
     public RepaymentType getType() {
         return RepaymentType.EQUAL_INSTALLMENT;
