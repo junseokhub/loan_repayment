@@ -1,7 +1,8 @@
-# 대출 상환 방식
-## 버전
+# Loan Repayment
+
+## Language & Framework
 Spring Boot 4.0.5, Java 21, Gradle (kts)
-## 폴더 구조
+## Directory Structure
 ```
 project/
 ├─ src/main/java/com.loan.repayment/
@@ -28,16 +29,16 @@ project/
 └─ Dockerfile
 ```
 
-### Strategy
-- 상황방식들 간 공통 로직이 없음. 추상 클래스로 묶을것이 없음.
-- 그렇다고 상속하기엔 결합도가 높음.
-- 인터페이스 기반 Bean 주입이 그대로 가능한 Strategy 선택.
-- 상속보다 구성 원칙과 일치
+### Enum translations
+```
+EQUAL_INSTALLMENT("Equal Installment Repayment")
+BULLET("Bullet Repayment")
+EQUAL_PRINCIPAL("Equal Principal Repayment")
+```
 
-### Registry
-- 다양한 상환 방식 추가 가능성
-- 확장 시 변경 범위 최소화
-- 작으면 switch 방식
+If you want it a bit more formal (e.g., for documentation or a resume):
+Implemented the Spring Registry Strategy Pattern to support future extensibility and scalability.
+
 
 
 
