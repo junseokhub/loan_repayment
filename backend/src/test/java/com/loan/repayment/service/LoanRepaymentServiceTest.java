@@ -6,7 +6,6 @@ import com.loan.repayment.domain.dto.CalculateRequestDto;
 import com.loan.repayment.strategy.BulletRepaymentStrategy;
 import com.loan.repayment.strategy.EqualInstallmentRepaymentStrategy;
 import com.loan.repayment.strategy.RepaymentStrategyRegistry;
-import com.loan.repayment.strategy.UnsupportedRepaymentTypeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

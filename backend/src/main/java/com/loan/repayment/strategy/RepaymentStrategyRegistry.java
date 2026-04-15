@@ -1,6 +1,8 @@
 package com.loan.repayment.strategy;
 
 import com.loan.repayment.domain.RepaymentType;
+import com.loan.repayment.global.exception.BusinessException;
+import com.loan.repayment.global.exception.ErrorCode;
 import org.springframework.stereotype.Component;
 
 import java.util.EnumMap;
@@ -19,7 +21,7 @@ public class RepaymentStrategyRegistry {
                         RepaymentStrategy::getType,
                         Function.identity(),
                         (a, b) -> {
-                            throw new IllegalStateException("상환방식 중복: " + a.getType());
+                            throw new BusinessException(ErrorCode.DUPLICATE_REPAYMENT_TYPE, a.getType().name());
                         },
                         () -> new EnumMap<>(RepaymentType.class)
                 ));
@@ -28,7 +30,7 @@ public class RepaymentStrategyRegistry {
     public RepaymentStrategy getStrategy(RepaymentType type) {
         RepaymentStrategy strategy = registry.get(type);
         if (strategy == null) {
-            throw new UnsupportedRepaymentTypeException(type);
+            throw new BusinessException(ErrorCode.UNSUPPORTED_REPAYMENT_TYPE, type.name());
         }
         return strategy;
     }

@@ -1,5 +1,8 @@
 package com.loan.repayment.domain;
 
+import com.loan.repayment.global.exception.BusinessException;
+import com.loan.repayment.global.exception.ErrorCode;
+
 import java.math.BigDecimal;
 
 public record RepaymentPlan(
@@ -9,13 +12,13 @@ public record RepaymentPlan(
 ){
     public RepaymentPlan {
         if (installmentNo <= 0) {
-            throw new IllegalArgumentException("회차 1이상이어야 함. 입력: %s " + installmentNo);
+            throw new BusinessException(ErrorCode.INVALID_INSTALLMENT_NO, String.valueOf(installmentNo));
         }
         if (principal == null || principal.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("원금 양수여야 함. 입력: %s " + principal);
+            throw new BusinessException(ErrorCode.INVALID_PLAN_PRINCIPAL, String.valueOf(principal));
         }
         if (interest == null || interest.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("이자 양수여야 함. 입력: %s " + interest);
+            throw new BusinessException(ErrorCode.INVALID_PLAN_INTEREST, String.valueOf(interest));
         }
     }
         public BigDecimal totalPay() {
